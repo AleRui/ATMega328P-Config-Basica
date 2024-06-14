@@ -19,13 +19,13 @@ sudo ln -s ~/.platformio/penv/bin/pio /usr/local/bin/pio
 sudo ln -s ~/.platformio/penv/bin/piodebuggdb /usr/local/bin/piodebuggdb
 ```
 
-Createing new project with platfomio tool VS CODE
+- Createing new project with platfomio tool VS CODE
 
-Delete files in src/ folder.
+- Delete files in src/ folder.
 
-Adding file for config: `atmega328.svd`
+- Adding file for config: `atmega328.svd`
 
-config file: ``platformio.ini
+- config file: ``platformio.ini
 ```
 [env:uno]
 platform = atmelavr
@@ -40,6 +40,8 @@ debug_tool = simavr
 ; Use this file for peripheral definitions, that will be shown by the debugger.
 debug_svd_path = atmega328p.svd
 ```
+
+PLAY! ENJOY IT!
 
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-14%2018-04-34.png){width='100px'}
 
