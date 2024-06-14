@@ -41,6 +41,8 @@ debug_tool = simavr
 debug_svd_path = atmega328p.svd
 ```
 
+- Dalay calculator [Dalay calculator](http://darcy.rsgc.on.ca/ACES/TEI4M/AVRdelay.html)
+
 - TEST:
 
 Test Wokwi [Wokwi](https://wokwi.com/projects/400687879499681793)
