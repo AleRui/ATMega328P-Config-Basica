@@ -4,7 +4,8 @@
 ; Author: Ale Ruiz
 ; Created: 2024-06-11
 
-#include <avr/io.h> ; necesario incluir libreia C++
+; necesario incluir libreia C++
+#include <avr/io.h>
 
 ;Vector de interrumpción, "reste"
 .org 0 ; empieza en la posición 0 de la memoria del programa.
@@ -19,34 +20,21 @@ setup:
 .global main
 main:
 
-  call red_pin_init ; inicia pin rojo
-
-  call red_pin_init ; inicia pin rojo
+  ; INICIALIZA codigo
+  ;ldi r16, 0b00100000 ; manda 1 bit al puerto 5
+  ldi r16, 0xFF ; inicializa variable a 1, manda 1 bit a todos los puertos
+  ;out DDRB, r16 ; le paso el valor a DDRB
+                ; esto le indica que los puertos son de salida
+  out _SFR_IO_ADDR(DDRB), r16 ; Libreria de dependencia, apunta a dirección de memoria directamente.
+  ldi r17, 0x00 ; inicializa variable a O
+  out _SFR_IO_ADDR(PORTB), r17; inicializa el puerto b a 0 (que es la variable r17)
 
 loop:
-  call send_signal_init_to_PORTB
+  out _SFR_IO_ADDR(PORTB), r16 ; enciende el led, porque son todos 1
   call delay
   out _SFR_IO_ADDR(PORTB), r17 ; apaga el puerto, porque los pone a 0
   call delay
   rjmp loop ; salta de nuevo al loop, esto es lo que crea el bucle
-
-red_pin_init:
-  ldi r16, 0xFF
-  out _SFR_IO_ADDR(DDRB), r16
-
-red_pin_stop:
-  ldi r17, 0x00 ;
-  out _SFR_IO_ADDR(PORTB), r17
-
-send_signal_init_to_PORTB:
-  out _SFR_IO_ADDR(PORTB), r16 ; enciende el led, porque son todos 1
-
-send_signal_stop_to_PORTB:
-  out _SFR_IO_ADDR(PORTB), r16 ; enciende el led, porque son todos 1
-  
-
-
-
 
 ; para poder verlo hay que poner un delay
 ; mirar CALCULADORA de retardos para AVR en los apuntes
