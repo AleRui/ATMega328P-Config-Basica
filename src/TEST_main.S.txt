@@ -1,0 +1,50 @@
+; Blinking LED demo
+; Jorge Juan-Chico. May, 2021
+;
+; Blink: demo LED parpadeante para placas Arduino.
+
+#include <avr/io.h>
+
+; Blink delay
+.equ DELAY, 16000
+
+; LED bit in PORTB
+.equ LED, PB5   ; Arduino Uno (atmega328p)
+;.equ LED, PB7   ; Arduino Mega 2560 (atmega2560)
+
+.text
+
+;
+; Main program
+;
+.global main
+main:
+
+    ; Initialization code
+    ; cycle counter: r22:r21:r20 (24 bits)
+    ldi r22,hi8(DELAY)
+    ldi r21,lo8(DELAY)
+    eor r20,r20
+    ldi r16,0xff                    ; all bits in PORTB are output
+    out _SFR_IO_ADDR(DDRB),r16
+
+    ; Main loop
+loop:
+    sbi _SFR_IO_ADDR(PORTB),LED     ; LED on
+    call delay                      ; wait
+    cbi _SFR_IO_ADDR(PORTB),LED     ; LED off
+    call delay                      ; wait
+    rjmp loop                       ; repeat
+
+;
+; Delay subroutine
+;
+delay:
+    subi r20,1
+    sbc r21,r1
+    sbc r22,r1
+    brne delay
+    ldi r22,hi8(DELAY)
+    ldi r21,lo8(DELAY)
+    ret
+
