@@ -1,6 +1,6 @@
 ; Comentario con punto y coma ;
 
-; Preogram: Semaforo
+; Preogram: Blink. Led de la placa parpadea
 ; Author: Ale Ruiz
 ; Created: 2024-06-11
 
@@ -18,17 +18,23 @@ setup:
 ; necesario para compilar
 .global main
 main:
-  ldi r16, (1 << PB0 | 0 << PB1 | 0 << PB2 | 0 << PD6 | 1 << PD7) ;verde semaforo : rojo peatón
+  ldi r16, (1 << PB0 | 0 << PB1 | 0 << PB2) ;verde semaforo : rojo peatón
   ldi r17, (0 << PB0 | 1 << PB1 | 0 << PB2 | 0 << PD6 | 1 << PD7) ;amarillo semaforo : verde peatón
   ldi r18, (0 << PB0 | 0 << PB1 | 1 << PB2 | 0 << PD6 | 1 << PD7) ;rojo semaforo : verde peatón
-  out _SFR_IO_ADDR(DDRB), r16 ;
+  ldi r19, (0 << PD6 | 1 << PD7)
+  ldi r20, (1 << PD6 | 0 << PD7)
+  out _SFR_IO_ADDR(DDRB), r19 ;
+  out _SFR_IO_ADDR(DDRD), r20 ;
 
 loop:
   out _SFR_IO_ADDR(PORTB), r16
+  out _SFR_IO_ADDR(PORTD), r19
   call delay
   out _SFR_IO_ADDR(PORTB), r17
+  out _SFR_IO_ADDR(PORTD), r20
   call delay
   out _SFR_IO_ADDR(PORTB), r18
+  out _SFR_IO_ADDR(PORTD), r20
   call delay
   rjmp loop
 
@@ -43,13 +49,13 @@ loop:
 ; 1s at 8.0 MHz
 
 delay:
-    ldi  r20, 41
-    ldi  r21, 150
-    ldi  r22, 128
-L1: dec  r22
+    ldi  r21, 122
+    ldi  r22, 193
+    ldi  r23, 130
+L1: dec  r23
+    brne L1
+    dec  r22
     brne L1
     dec  r21
-    brne L1
-    dec  r20
     brne L1
     ret ; añadido para que vuelva return
