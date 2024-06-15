@@ -1,6 +1,6 @@
 ; Comentario con punto y coma ;
 
-; Preogram: Blink. Led de la placa parpadea
+; Preogram: Semaforo
 ; Author: Ale Ruiz
 ; Created: 2024-06-11
 
@@ -18,34 +18,19 @@ setup:
 ; necesario para compilar
 .global main
 main:
-
-  call red_pin_init ; inicia pin rojo
-
-  call red_pin_init ; inicia pin rojo
+  ldi r16, (1 << PB0 | 0 << PB1 | 0 << PB2 | 0 << PD6 | 1 << PD7) ;verde semaforo : rojo peatón
+  ldi r17, (0 << PB0 | 1 << PB1 | 0 << PB2 | 0 << PD6 | 1 << PD7) ;amarillo semaforo : verde peatón
+  ldi r18, (0 << PB0 | 0 << PB1 | 1 << PB2 | 0 << PD6 | 1 << PD7) ;rojo semaforo : verde peatón
+  out _SFR_IO_ADDR(DDRB), r16 ;
 
 loop:
-  call send_signal_init_to_PORTB
+  out _SFR_IO_ADDR(PORTB), r16
   call delay
-  out _SFR_IO_ADDR(PORTB), r17 ; apaga el puerto, porque los pone a 0
-  call delay
-  rjmp loop ; salta de nuevo al loop, esto es lo que crea el bucle
-
-red_pin_init:
-  ldi r16, 0xFF
-  out _SFR_IO_ADDR(DDRB), r16
-
-red_pin_stop:
-  ldi r17, 0x00 ;
   out _SFR_IO_ADDR(PORTB), r17
-
-send_signal_init_to_PORTB:
-  out _SFR_IO_ADDR(PORTB), r16 ; enciende el led, porque son todos 1
-
-send_signal_stop_to_PORTB:
-  out _SFR_IO_ADDR(PORTB), r16 ; enciende el led, porque son todos 1
-  
-
-
+  call delay
+  out _SFR_IO_ADDR(PORTB), r18
+  call delay
+  rjmp loop
 
 
 ; para poder verlo hay que poner un delay
