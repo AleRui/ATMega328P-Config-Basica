@@ -63,6 +63,7 @@ PLAY! ENJOY IT!
 
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-14%2018-54-49.png){width='100px'}
 
-Video ATMega329p - Actividad 1 - Semaforo
 
-![Actividad 1](https://www.youtube.com/watch?v=77lnnNhPcwE){width='100px'}
+## Video ATMega329p.  Actividad 1: Semaforo
+
+![Actividad 1](https://youtu.be/77lnnNhPcwE?feature=shared){width='100px'}
