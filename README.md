@@ -65,4 +65,4 @@ PLAY! ENJOY IT!
 
 Video ATMega329p - Actividad 1 - Semaforo
 
-![](https://www.youtube.com/watch?v=77lnnNhPcwE){width='100px'}
+![Actividad 1](https://www.youtube.com/watch?v=77lnnNhPcwE){width='100px'}
