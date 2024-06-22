@@ -64,6 +64,14 @@ PLAY! ENJOY IT!
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-14%2018-54-49.png){width='100px'}
 
 
-## Video ATMega329p.  Actividad 1: Semaforo
+Stop red led with push button
+
+![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-22%2021-23-27.png){width='100px'}
+
+## Video ATMega328p.  Actividad 1: Semaforo
 
 * https://youtu.be/3i9TWQG4xeg?feature=shared
+
+## Video ATMega328p. Actividad extra: interrumptor de led
+
+* https://youtu.be/JXgJ8hjdt0w?feature=shared
