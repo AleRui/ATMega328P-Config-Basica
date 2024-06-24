@@ -1,6 +1,6 @@
 ; Comentario con punto y coma ;
 
-; Preogram: Blink. Led de la placa parpadea
+; Preogram: Blink. Interruptor pulsador led
 ; Author: Ale Ruiz
 ; Created: 2024-06-11
 
@@ -21,71 +21,45 @@ setup:
 
 main:
   ; realizamos el "seteo" de las salidas y la entrada
-  ldi r16, (1 << PB4 | 0 << PB3 | 0 << PB2) ;Posición STOP
-  ldi r17, (0 << PB4 | 1 << PB3 | 0 << PB2) ;Posición PRECAUCION
-  ldi r18, (0 << PB4 | 0 << PB3 | 1 << PB2) ;Posición AVANCE
+  ldi r16, (1 << PB4) ;carga directa en r16 el valor 1 para el pueto PB4
+  ldi r17, (0 << PB4) ;carga directa en r16 el valor 0 para el pueto PB4
 
-  ; led auxiliar para debugeo del pulsador
-  ldi r20, (1 << PB1)
-  ldi r25, (0 << PB1)
 
 ; Habilita pull-up interno para el pulsador en PD6
-  ldi r24, (1 << PD6) ;
-  out _SFR_IO_ADDR(PORTD), r24
+  ldi r25, (1 << PD6) ;
+  out _SFR_IO_ADDR(PORTD), r25
 
 ; Inicializa los puertos B y D a 0
-  ldi r19, 0x00
-  out _SFR_IO_ADDR(PORTB), r19
-  out _SFR_IO_ADDR(PORTD), r19
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTB), r18
+  out _SFR_IO_ADDR(PORTD), r18
 
 loop:
-  ;call check_push_button ; llama a subrutina
-  call sign_stop ; llama a subrutina
-  call delay ; llama a subrutina
-
-  ;call check_push_button ; llama a subrutina
-  call sign_caution ; llama a subrutina
-  call delay ; llama a subrutina
-
-  ;call check_push_button ; llama a subrutina
-  call sign_go ; llama a subrutina
-  call delay ; llama a subrutina
-
+  call turn_on_red_led ; llama a subrutina
+  ;call delay ; llama a subrutina
+  call check_push_button ; llama a subrutina
+  ;call delay ; llama a subrutina
   rjmp loop ; vuelve a lanzar subrutina
 
-sign_stop:
+turn_on_red_led:
   out _SFR_IO_ADDR(PORTB), r16 ; manda valor de r16 a la salida PORTB
   ret ; retorno a la parte del código que hizo la llamada
 
-sign_caution:
+turn_off_red_led:
   out _SFR_IO_ADDR(PORTB), r17 ; manda valor de r17 a la salida PORTB
   ret ; retorno a la parte del código que hizo la llamada
 
-sign_go:
-  out _SFR_IO_ADDR(PORTB), r18 ; manda valor de r17 a la salida PORTB
-  ret ; retorno a la parte del código que hizo la llamada
-
-turn_on_blue_light_debug:
-  out _SFR_IO_ADDR(PORTB), r20
+check_push_button:
+  in r25, _SFR_IO_ADDR(PIND) ; lee a entrada
+  sbrs r25, PD6 
+  rjmp reset_push_button
   ret
 
-check_push_button:
-  in r24, _SFR_IO_ADDR(PIND) ; lee a entrada
-  sbrs r24, PD6 ; compara valor de PD6 con valor de registro r24, si es 1 salta
-  rjmp reset_push_button
-  ;ret
-
 reset_push_button:
-  ;call sign_stop
-  out _SFR_IO_ADDR(PORTD), r19
+  out _SFR_IO_ADDR(PORTD), r18 ; salta si el registro en el bit es 1
+  call turn_off_red_led
   call delay;
-  out _SFR_IO_ADDR(PORTB), r19
-  call delay;
-  call turn_on_blue_light_debug
-  call delay;
-
-  ;Vuelve al bucle normal.
-  ;rjmp loop
+  ret
 
 
 ; para poder verlo hay que poner un delay
