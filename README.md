@@ -41,6 +41,9 @@ debug_tool = simavr
 debug_svd_path = atmega328p.svd
 ```
 
+- Arduino ATMega328p Cheat Sheet [Cheat Sheet] (https://cheatography.com/claudiunv/cheat-sheets/arduino-uno-to-avr-gcc-migration/)
+
+
 - Dalay calculator [Dalay calculator](http://darcy.rsgc.on.ca/ACES/TEI4M/AVRdelay.html)
 
 - TEST:
