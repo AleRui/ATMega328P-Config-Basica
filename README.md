@@ -50,6 +50,12 @@ debug_svd_path = atmega328p.svd
 
 Test Wokwi [Wokwi](https://wokwi.com/projects/400687879499681793)
 
+Test Wokwi [Wokwi](https://wokwi.com/projects/401374975159536641)
+
+Test Wokwi [Wokwi](https://wokwi.com/projects/401879562922159105)
+
+Test Wokwi [Wokwi](https://wokwi.com/projects/401600386125813761)
+
 PLAY! ENJOY IT!
 
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-14%2018-04-34.png){width='100px'}
@@ -75,6 +81,10 @@ Stop red led with push button. Conf V2
 
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-29%2013-55-43.png){width='100px'}
 
+Semaforo Pusher Stop
+
+![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-29%2018-25-21.png){width='100px'}
+
 ## Video ATMega328p.  Actividad 1: Semaforo
 
 * https://youtu.be/3i9TWQG4xeg?feature=shared
@@ -86,3 +96,7 @@ Stop red led with push button. Conf V2
 ## Video ATMega328p. Actividad extra: interrumptor de led Conf V2
 
 * https://youtu.be/PEmJOxcYEw0?feature=shared
+
+## Video ATMega328p. Actividad II: Semáforo con interruptor
+
+* https://youtu.be/cwZe1Qivp3s?feature=shared
