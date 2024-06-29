@@ -71,6 +71,10 @@ Stop red led with push button
 
 ![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-22%2021-23-27.png){width='100px'}
 
+Stop red led with push button. Conf V2
+
+![](https://github.com/AleRui/ATMega328P-Config-Basica/blob/main/imas/Captura%20desde%202024-06-29%2013-55-43.png){width='100px'}
+
 ## Video ATMega328p.  Actividad 1: Semaforo
 
 * https://youtu.be/3i9TWQG4xeg?feature=shared
@@ -78,3 +82,7 @@ Stop red led with push button
 ## Video ATMega328p. Actividad extra: interrumptor de led
 
 * https://youtu.be/JXgJ8hjdt0w?feature=shared
+
+## Video ATMega328p. Actividad extra: interrumptor de led Conf V2
+
+* https://youtu.be/PEmJOxcYEw0?feature=shared
